@@ -1,0 +1,32 @@
+Sudoku Pseudo Code - Project 1
+ 
+ 1) Define required constants:
+	1.1) Define puzzle boards 3x3, 6x6, 9x9
+	1.2) Define solution board 3x3, 6x6, 9x9
+2) Define state varibales to track state of the game
+	2.1) Use board array to represent squares
+	2.2) Solved correctly
+	2.3) currentInput
+3) Store elements on page 
+	3.1) Grid elements
+	3.2) Check Answer Button
+	3.3) Clear Button
+	3.4) Enter Value Input/Button
+4)On app load
+	4.1) Initialize state varibales
+	4.2) Map the grid elements to the array 
+	4.3) Render the board:
+	 4.3.1) Use index of selected item and set to entered value
+	4.4)Render Message:
+	 4.4.1) If check answer button clicked compare solution board to puzzle board return solved correctly
+	 4.4.2) If  solved correctly is true display winning message if not display try again
+5) Handle user clicking square and entering value using enter value input/button
+	5.1) Obtain index of selected square and value of input/button
+	 5.1.1) Check input is a number
+	5.2) Update the board array
+	5.3) If square has value it can no longer be selected
+6) Handle user clicking value Input/Button
+	Read value from input and set to currentInput varibale
+7) Handle user clicking clear button
+	7.1) Reset board to display original puzzle board
+8) Handle user clicking the check answer button
