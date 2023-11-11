@@ -3,3 +3,78 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    grid-template: 
+        "head head head head head head"
+        "choice grid grid input"
+}
+
+header {
+    font-size: 10vmin;
+    font-weight: bolder;
+    background-color: yellow;
+    grid-area: head;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items: center;
+    gap: 70%;
+    width: 100vw;
+    background-color: red;
+    grid-area: choice;
+}
+
+#choices > h1 {
+    font-size: 2em;
+}
+#choices > h3 {
+    font-size: 1.2em;
+}
+
+#board-3 {
+    height: 6vh;
+}
+
+#board-6 {
+    height: 12vh;
+}
+
+#board-9 {
+    height: 24vh;
+}
+
+#interact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    background-color: green;
+    grid-area: input;
+}
+
+#val-input {
+    color: lightgray;
+    margin-bottom: -3vh;
+}
+
+#board-3-3 {
+    background-color: blue;
+    display: grid;
+    grid-template-columns: repeat(3, 5vmin);
+    grid-template-rows: repeat(3, 5vmin);
+    gap: 0.1vmin;
+    grid-area: grid;
+}
+#board-3-3 > div {
+    border: 0.1vmin solid black;
+}
