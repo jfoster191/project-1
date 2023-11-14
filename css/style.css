@@ -98,7 +98,6 @@ h1 {
 }
 
 #board-4-4 {
-    /* background-color: blue; */
     display: grid;
     grid-template-columns: repeat(4, 20vmin);
     grid-template-rows: repeat(4, 20vmin);
@@ -109,10 +108,26 @@ h1 {
     margin-left: 4vw;
     margin-right: 4vw;
     font-size: 3em;
-    text-align: center;
-    
+    text-align: center; 
 }
 #board-4-4 > div {
+    border: 0.3vmin solid black;
+    background-color: white;
+}
+#board-6-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 13vmin);
+    grid-template-rows: repeat(6, 13vmin);
+    grid-area: grid;
+    justify-content: center;
+    align-content: center;
+    height: 90vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    font-size: 3em;
+    text-align: center; 
+}
+#board-6-6 > div {
     border: 0.3vmin solid black;
     background-color: white;
 }
@@ -128,5 +143,8 @@ h1 {
 }
 
 #board-4-4 > div:hover {
+    background-color: #A1A1A1;
+}
+#board-6-6 > div:hover {
     background-color: #A1A1A1;
 }
