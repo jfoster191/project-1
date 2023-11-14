@@ -5,6 +5,9 @@
 }
 
 body {
+    background-image: url("https://t3.ftcdn.net/jpg/00/36/49/68/360_F_36496844_T0fhWa7JRPySG3Uv0iFed6Ev4lIMfRRz.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: grid;
     flex-direction: row;
     justify-content: center;
@@ -18,13 +21,20 @@ body {
 
 header {
     display: flex;
+    flex-direction: column;
     font-size: 10vmin;
     font-weight: bolder;
     /* background-color: yellow; */
     grid-area: head;
     width: 70vw;
     justify-content: center;
+    text-align: center;
     margin-top: -10px;
+}
+
+h1 {
+    font-size: 5vmin;
+    margin-bottom: -5vmin;
 }
 
 #choices {
@@ -74,13 +84,17 @@ header {
 }
 
 #interact > button {
-    padding: 8px 30px;
+    height: 5vh;
+    width: 15vw;
 }
 
 #val-input {
-    color: lightgray;
     margin-bottom: -21vh;
     padding: 8px 18px;
+    text-align: center;
+}
+#val-input: {
+    color: black;
 }
 
 #board-4-4 {
@@ -92,9 +106,15 @@ header {
     justify-content: center;
     align-content: center;
     height: 90vh;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    font-size: 3em;
+    text-align: center;
+    
 }
 #board-4-4 > div {
     border: 0.3vmin solid black;
+    background-color: white;
 }
 
 #board-4:hover {
@@ -108,5 +128,5 @@ header {
 }
 
 #board-4-4 > div:hover {
-    background-color: lightgray;
+    background-color: #A1A1A1;
 }
