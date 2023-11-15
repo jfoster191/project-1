@@ -97,39 +97,25 @@ h1 {
     color: black;
 }
 
-#board-4-4 {
+#board {
     display: grid;
-    grid-template-columns: repeat(4, 20vmin);
-    grid-template-rows: repeat(4, 20vmin);
     grid-area: grid;
     justify-content: center;
     align-content: center;
     height: 90vh;
     margin-left: 4vw;
     margin-right: 4vw;
-    font-size: 3em;
-    text-align: center; 
+    margin-top: 2vh;
+ 
 }
-#board-4-4 > div {
+#board > div {
     border: 0.3vmin solid black;
     background-color: white;
-}
-#board-6-6 {
-    display: grid;
-    grid-template-columns: repeat(6, 13vmin);
-    grid-template-rows: repeat(6, 13vmin);
-    grid-area: grid;
-    justify-content: center;
-    align-content: center;
-    height: 90vh;
-    margin-left: 4vw;
-    margin-right: 4vw;
     font-size: 3em;
-    text-align: center; 
+    text-align: center;
 }
-#board-6-6 > div {
-    border: 0.3vmin solid black;
-    background-color: white;
+#board > div:hover {
+    background-color: #A1A1A1;
 }
 
 #board-4:hover {
@@ -140,11 +126,4 @@ h1 {
 }
 #board-9:hover {
     height: 26vh;
-}
-
-#board-4-4 > div:hover {
-    background-color: #A1A1A1;
-}
-#board-6-6 > div:hover {
-    background-color: #A1A1A1;
 }

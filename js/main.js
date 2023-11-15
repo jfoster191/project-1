@@ -5,9 +5,18 @@ const solutionBoard4x4 = [
     4, 1, 3, 2,
     2, 3, 1, 4
 ];
+const solutionBoard6x6 = [
+    5, 3, 1, 2, 6, 4,
+    2, 4, 6, 1, 5, 3, 
+    1, 6, 3, 5, 4, 2, 
+    4, 5, 2, 3, 1, 6, 
+    3, 1, 4, 6, 2, 5, 
+    2, 6, 5, 4, 3, 1
+];
 
 //State Variables
-let puzzleBoard
+let puzzleBoard;
+let solutionBoard;
 let puzzleBoard4x4;
 let puzzleBoard6x6;
 let choice;
@@ -17,6 +26,7 @@ let currentCell;
 let lastCell;
 let initial;
 let checkArr;
+let displaying;
 
 //Page Elements to be Accessed Frequently
 let gridEl;
@@ -25,19 +35,16 @@ const checkBtn = document.getElementById('check');
 const resetBtn = document.getElementById('reset');
 const inputVal = document.getElementById('val-input');
 const messageEl = document.querySelector('h1');
+const boardEl = document.getElementById('board');
 
 //Event Listeners
 submitBtn.addEventListener('click', submitClick);
-document.getElementById('board-4-4').addEventListener('click', gridClick);
-document.getElementById('board-6-6').addEventListener('click', gridClick);
+document.getElementById('board').addEventListener('click', gridClick);
 resetBtn.addEventListener('click', resetClick);
 checkBtn.addEventListener('click', checkAnsClick);
 document.getElementById('board-4').addEventListener('click', userChoice)
 document.getElementById('board-6').addEventListener('click', userChoice)
 document.getElementById('board-9').addEventListener('click', userChoice)
-
-//Main
-hideGrids();
 
 //Functions
 
@@ -56,12 +63,14 @@ function init () {
     null, 1, 4, 6, null, 5,
     null, 6, null, 4, null, null
  ]
- if (choice === 4){ puzzleBoard = puzzleBoard4x4;}
- else if (choice === 6){ puzzleBoard = puzzleBoard6x6}
+ if (choice === 4){ puzzleBoard = puzzleBoard4x4; }
+ else if (choice === 6) { puzzleBoard = puzzleBoard6x6; }
  solvedCorrectly = null;
  lastCell = null;
  checkArr = [];
  initial = 1;
+ displaying = 1;
+ createBoard();
  render ();
  initial = 0;
 }
@@ -74,7 +83,7 @@ function render () {
 function renderBoard () {
     puzzleBoard.forEach(function(cell, idx) {
         const cellPos = idx;
-        const cellEl = document.getElementById(cellPos);
+        const cellEl = gridEl[cellPos];
         if (puzzleBoard[idx] === null){return}
         else{
             cellEl.innerText = puzzleBoard[idx];
@@ -115,8 +124,10 @@ function submitClick () {
 }
 
 function gridClick (evt) {
+    console.log(gridEl)
         if (gridEl.indexOf(evt.target) === -1){return;}
         const cellPos = gridEl.indexOf(evt.target);
+        console.log(cellPos)
         lastCell = currentCell;
         if(lastCell){
         lastCell.style.backgroundColor = null;
@@ -129,7 +140,7 @@ function checkAnsClick () {
     gridEl.forEach(function(elem, idx){
         checkArr[idx] = elem.innerText;
     });
-    if (checkArr.toString() === solutionBoard4x4.toString()){ solvedCorrectly = 1;} 
+    if (checkArr.toString() === solutionBoard.toString()){ solvedCorrectly = 1;} 
     else {solvedCorrectly = 0;}
     console.log(checkArr);
     console.log(solvedCorrectly);
@@ -145,32 +156,31 @@ function resetClick (){
 
 function userChoice (evt){
     if (evt.target.id === 'board-4'){
-        gridEl = [...document.querySelectorAll('#board-4-4 > div')];
-        gridEl.forEach(function(cell){
-            cell.removeAttribute('hidden')
-            choice = 4;
-        })
+        choice = 4;
+        puzzleBoard = puzzleBoard4x4;
+        solutionBoard = solutionBoard4x4;
+
     }
-    else if (evt.target.id === 'board-6'){
-        gridEl = [...document.querySelectorAll('#board-6-6 > div')]
-        gridEl.forEach(function(cell){
-            cell.removeAttribute('hidden')
-            choice = 6;
-        })
+    if (evt.target.id === 'board-6'){
+        choice = 6;
+        puzzleBoard = puzzleBoard6x6;
+        solutionBoard = solutionBoard6x6;
     }
     init();
 }
 
-function hideGrids (){
-    gridEl = [...document.querySelectorAll('#board-4-4 > div')];
-    gridEl.forEach(function(cell){
-        cell.setAttribute('hidden', 'hidden')
-    })
-
-    gridEl = [...document.querySelectorAll('#board-6-6 > div')];
-    gridEl.forEach(function(cell){
-        cell.setAttribute('hidden', 'hidden')
-    })
-    choice = null;
-    renderMessage();
+function createBoard (){
+    if (gridEl){boardEl.innerHTML = '';}
+    puzzleBoard.forEach(function(cell, idx){
+        const div = document.createElement(`div`);
+        boardEl.appendChild(div).setAttribute('id', idx);
+     });
+     gridEl = [...document.querySelectorAll('#board > div')];
+     if (choice === 4){
+        boardEl.style.gridTemplateColumns = 'repeat(4, 20vmin)';
+        boardEl.style.gridTemplateRows = 'repeat(4, 20vmin)';
+     } else if (choice === 6){
+        boardEl.style.gridTemplateColumns = 'repeat(6, 13vmin)';
+        boardEl.style.gridTemplateRows = 'repeat(6, 13vmin)';
+     }
 }
