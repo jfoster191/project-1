@@ -1,4 +1,4 @@
-//Constants
+//-------------------Constants-----------------------//
 const solutionBoard4x4 = [
     1, 2, 4, 3,
     3, 4, 2, 1,
@@ -13,12 +13,24 @@ const solutionBoard6x6 = [
     3, 1, 4, 6, 2, 5, 
     2, 6, 5, 4, 3, 1
 ];
+const solutionBoard9x9 = [
+    4, 5, 3, 8, 2, 6, 1, 9, 7,
+    8, 9, 2, 5, 7, 1, 6, 3, 4, 
+    1, 6, 7, 4, 9, 3, 5, 2, 8,
+    7, 1, 4, 9, 5, 2, 8, 6, 3, 
+    5, 8, 6, 1, 3, 7, 2, 4, 9,
+    3, 2, 9, 6, 8, 4, 7, 5, 1,
+    9, 3, 5, 2, 1, 8, 4, 7, 6,
+    6, 7, 1, 3, 4, 5, 9, 8, 2,
+    2, 4, 8, 7, 6, 9, 3, 1, 5
+];
 
-//State Variables
+//-------------State Variables--------------------//
 let puzzleBoard;
 let solutionBoard;
 let puzzleBoard4x4;
 let puzzleBoard6x6;
+let puzzleBoard9x9;
 let choice;
 let solvedCorrectly;
 let currentInput;
@@ -28,7 +40,7 @@ let initial;
 let checkArr;
 let displaying;
 
-//Page Elements to be Accessed Frequently
+//---------Page Elements to be Accessed Frequently------------//
 let gridEl;
 const submitBtn = document.getElementById('submit');
 const checkBtn = document.getElementById('check');
@@ -37,7 +49,7 @@ const inputVal = document.getElementById('val-input');
 const messageEl = document.querySelector('h1');
 const boardEl = document.getElementById('board');
 
-//Event Listeners
+//-------------------Event Listeners--------------//
 submitBtn.addEventListener('click', submitClick);
 document.getElementById('board').addEventListener('click', gridClick);
 resetBtn.addEventListener('click', resetClick);
@@ -46,33 +58,49 @@ document.getElementById('board-4').addEventListener('click', userChoice)
 document.getElementById('board-6').addEventListener('click', userChoice)
 document.getElementById('board-9').addEventListener('click', userChoice)
 
-//Functions
+//----------------------Main--------------------------//
+//This is render the initial message 
+renderMessage();
+
+//----------------------Functions-----------------//
 
 function init () {
- puzzleBoard4x4 = [
-    null, null, null, 3,
-    null, 4, null, 1,
-    null, null, 3, 2,
-    null, null, null, null
- ];
- puzzleBoard6x6 = [
-    5, null, null, null, 6, null,
-    null, 4, null, 1, null, 3,
-    1, null, 3, null, 4, null,
-    null, null, 2, null, 1, null,
-    null, 1, 4, 6, null, 5,
-    null, 6, null, 4, null, null
- ]
- if (choice === 4){ puzzleBoard = puzzleBoard4x4; }
- else if (choice === 6) { puzzleBoard = puzzleBoard6x6; }
- solvedCorrectly = null;
- lastCell = null;
- checkArr = [];
- initial = 1;
- displaying = 1;
- createBoard();
- render ();
- initial = 0;
+    puzzleBoard4x4 = [
+        null, null, null, 3,
+        null, 4, null, 1,
+        null, null, 3, 2,
+        null, null, null, null
+    ];
+    puzzleBoard6x6 = [
+        5, null, null, null, 6, null,
+        null, 4, null, 1, null, 3,
+        1, null, 3, null, 4, null,
+        null, null, 2, null, 1, null,
+        null, 1, 4, 6, null, 5,
+        null, 6, null, 4, null, null
+    ];
+    puzzleBoard9x9 = [
+        4, 5, null, null, null, null, null, null, null,
+        null, null, 2, null, 7, null, 6, 3, null, 
+        null, null, null, null, null, null, null, 2, 8,
+        null, null, null, 9, 5, null, null, null, null, 
+        null, 8, 6, null, null, null, 2, null, null,
+        null, 2, null, 6, null, null, 7, 5, null,
+        null, null, null, null, null, null, 4, 7, 6,
+        null, 7, null, null, 4, 5, null, null, null,
+        null, null, 8, null, null, 9, null, null, null
+    ];
+    if (choice === 4){ puzzleBoard = puzzleBoard4x4; }
+    else if (choice === 6) { puzzleBoard = puzzleBoard6x6; }
+    else if (choice === 9) { puzzleBoard = puzzleBoard9x9;}
+    solvedCorrectly = null;
+    lastCell = null;
+    checkArr = [];
+    initial = 1;
+    displaying = 1;
+    createBoard();
+    render ();
+    initial = 0;
 }
 
 function render () {
@@ -89,14 +117,14 @@ function renderBoard () {
             cellEl.innerText = puzzleBoard[idx];
             if (initial === 1){
                 cellEl.style.fontWeight = 'bold';
-                cellEl.style.color = '#3282F6';
+                cellEl.style.color = '#000E8C';
             }
         }
     });
 }
 
 function renderMessage (){
-    if (choice === null){
+    if (choice === undefined){
         messageEl.innerText = 'Please Make Your Difficulty Selection'
         return
     }
@@ -166,6 +194,11 @@ function userChoice (evt){
         puzzleBoard = puzzleBoard6x6;
         solutionBoard = solutionBoard6x6;
     }
+    if (evt.target.id === 'board-9'){
+        choice = 9;
+        puzzleBoard = puzzleBoard9x9;
+        solutionBoard = solutionBoard9x9
+    }
     init();
 }
 
@@ -182,5 +215,8 @@ function createBoard () {
      } else if (choice === 6){
         boardEl.style.gridTemplateColumns = 'repeat(6, 13vmin)';
         boardEl.style.gridTemplateRows = 'repeat(6, 13vmin)';
+     } else if (choice === 9){
+        boardEl.style.gridTemplateColumns = 'repeat(9, 9vmin)';
+        boardEl.style.gridTemplateRows = 'repeat(9, 9vmin)';
      }
 }

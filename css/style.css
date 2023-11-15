@@ -24,12 +24,11 @@ header {
     flex-direction: column;
     font-size: 10vmin;
     font-weight: bolder;
-    /* background-color: yellow; */
     grid-area: head;
     width: 70vw;
     justify-content: center;
     text-align: center;
-    margin-top: -10px;
+    margin-top: 1vh;
 }
 
 h1 {
@@ -42,9 +41,10 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    /* background-color: red; */
     grid-area: choice;
     height: 100vh;
+    margin-left: 3vw;
+    margin-right: -3vw;
 }
 
 #choices > h1 {
@@ -78,9 +78,10 @@ h1 {
     justify-content: space-evenly;
     align-items: center;
     gap: 5vh;
-    /* background-color: green; */
     grid-area: input;
     height: 100vh;
+    margin-right: 3vw;
+    margin-left: -3vw;
 }
 
 #interact > button {
@@ -103,9 +104,8 @@ h1 {
     justify-content: center;
     align-content: center;
     height: 90vh;
-    margin-left: 4vw;
-    margin-right: 4vw;
     margin-top: 2vh;
+    margin-bottom: 2vh;
  
 }
 #board > div {
@@ -115,7 +115,8 @@ h1 {
     text-align: center;
 }
 #board > div:hover {
-    background-color: #A1A1A1;
+    background-color: #0014CC;
+    opacity: 0.5;
 }
 
 #board-4:hover {
