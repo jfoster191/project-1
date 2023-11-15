@@ -89,7 +89,7 @@ function renderBoard () {
             cellEl.innerText = puzzleBoard[idx];
             if (initial === 1){
                 cellEl.style.fontWeight = 'bold';
-                cellEl.style.backgroundColor = '#D4D4D4';
+                cellEl.style.color = '#3282F6';
             }
         }
     });
@@ -169,7 +169,7 @@ function userChoice (evt){
     init();
 }
 
-function createBoard (){
+function createBoard () {
     if (gridEl){boardEl.innerHTML = '';}
     puzzleBoard.forEach(function(cell, idx){
         const div = document.createElement(`div`);
