@@ -29,11 +29,19 @@ header {
     justify-content: center;
     text-align: center;
     margin-top: 1vh;
+    /* background-color: aqua; */
 }
 
 h1 {
     font-size: 5vmin;
     margin-bottom: -5vmin;
+}
+
+#message {
+    text-wrap: wrap;
+
+    align-content: center;
+    /* background-color: #0014CC; */
 }
 
 #choices {
@@ -128,3 +136,12 @@ h1 {
 #board-9:hover {
     height: 26vh;
 }
+
+#numbers {
+    display: grid;
+    font-size: 4em;
+    width: 12vw;
+    grid-template-columns: repeat(3, 9vmin);
+}
+
+

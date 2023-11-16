@@ -52,22 +52,24 @@ const resetBtn = document.getElementById('reset');
 const inputVal = document.getElementById('val-input');
 const messageEl = document.querySelector('h1');
 const boardEl = document.getElementById('board');
+const numbersEl = document.getElementById('numbers');
 
 //-------------------Event Listeners--------------//
-submitBtn.addEventListener('click', submitClick); 
+// submitBtn.addEventListener('click', submitClick); 
 document.getElementById('board').addEventListener('click', gridClick);
 resetBtn.addEventListener('click', resetClick);
 checkBtn.addEventListener('click', checkAnsClick);
-document.getElementById('board-4').addEventListener('click', userChoice)
-document.getElementById('board-6').addEventListener('click', userChoice)
-document.getElementById('board-9').addEventListener('click', userChoice)
+document.getElementById('board-4').addEventListener('click', userChoice);
+document.getElementById('board-6').addEventListener('click', userChoice);
+document.getElementById('board-9').addEventListener('click', userChoice);
+numbersEl.addEventListener('click', numClick);
 
 //----------------------Main--------------------------//
-//This is render the initial message 
 renderMessage();
 
-//----------------------Functions-----------------//
+//--------------------------Functions----------------------------//
 
+//-----------Initialization Function----------//
 function init () {
     puzzleBoard4x4 = [
         null, null, null, 3,
@@ -108,6 +110,8 @@ function init () {
     initial = 0;
 }
 
+
+//----------------Rendering Functions------------------//
 function render () {
     renderBoard();
     renderMessage();
@@ -138,7 +142,7 @@ function renderMessage (){
     messageEl.innerText = 'Please Enter A Valid Number';
     }
     if (solvedCorrectly === 1){
-        messageEl.innerText = `Congrats You Sovled the Puzzle Correctly in ${endTime} Seconds!`
+        messageEl.innerText = `You Sovled the Puzzle Correctly in ${endTime} Seconds!`
     }
     else if (solvedCorrectly === 0){
         messageEl.innerText = 'Take a Look Again, Somethings Not Quite Right'
@@ -146,8 +150,10 @@ function renderMessage (){
     }
 }
 
-function submitClick () {
-    currentInput = parseInt(inputVal.value);
+
+//------------------Event Handler Functions------------------//
+function numClick (evt) {
+    currentInput = parseInt(evt.target.innerText);
     if (!currentInput){render();}
     else{
     currentCell.innerText = currentInput;
@@ -191,7 +197,6 @@ function userChoice (evt){
         choice = 4;
         puzzleBoard = puzzleBoard4x4;
         solutionBoard = solutionBoard4x4;
-
     }
     if (evt.target.id === 'board-6'){
         choice = 6;
@@ -206,8 +211,19 @@ function userChoice (evt){
     init();
 }
 
+//----------------Create Board Function-----------------//
+
 function createBoard () {
-    if (gridEl){boardEl.innerHTML = '';}
+    if (gridEl){
+        boardEl.innerHTML = '';
+        numbersEl.innerHTML = '';
+        
+    }
+    for (i=1; i < choice+1; i++){
+        const textEl = document.createElement('p',`id="p${i}"`);
+        textEl.innerHTML = `${i}`;
+        numbersEl.appendChild(textEl);
+    }
     puzzleBoard.forEach(function(cell, idx){
         const div = document.createElement(`div`);
         boardEl.appendChild(div).setAttribute('id', idx);
@@ -251,37 +267,3 @@ function createBoard () {
         }
      }
 }
-
-
-// let randArr = [
-//     null, null, null, null,
-//     null, null, null, null,
-//     null, null, null, null,
-//     null, null, null, null
-// ];
-// let randNum;
-
-// for (i=0; i <4; i++){
-//     let randN = generateRandNum();
-//     if (i === 0){
-//         randArr[i] = randN;
-//     } else if (i === 1){
-//         randArr[1] = randN;
-//         while (randArr[1] === randArr[0]){
-//         randN = generateRandNum();
-//         randArr[1] = randN;
-//         }
-//     } else if (i === 2){
-//         randArr[4] = randN;
-//         while(randArr[4] === randArr[0] || randArr[4] === randArr[1]){
-//             randN = generateRandNum();
-//             randArr[1] = randN;
-//         }
-//     }
-// console.log(randArr);
-// }
-
-// function generateRandNum (){
-//     randNum = Math.floor((Math.random()*4)+1);
-//     return randNum;
-// }
