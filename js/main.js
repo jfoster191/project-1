@@ -24,6 +24,8 @@ const solutionBoard9x9 = [
     6, 7, 1, 3, 4, 5, 9, 8, 2,
     2, 4, 8, 7, 6, 9, 3, 1, 5
 ];
+const thickness = '0.9vmin';
+
 
 //-------------State Variables--------------------//
 let puzzleBoard;
@@ -39,6 +41,8 @@ let lastCell;
 let initial;
 let checkArr;
 let displaying;
+let startTime;
+let endTime;
 
 //---------Page Elements to be Accessed Frequently------------//
 let gridEl;
@@ -50,7 +54,7 @@ const messageEl = document.querySelector('h1');
 const boardEl = document.getElementById('board');
 
 //-------------------Event Listeners--------------//
-submitBtn.addEventListener('click', submitClick);
+submitBtn.addEventListener('click', submitClick); 
 document.getElementById('board').addEventListener('click', gridClick);
 resetBtn.addEventListener('click', resetClick);
 checkBtn.addEventListener('click', checkAnsClick);
@@ -67,7 +71,7 @@ renderMessage();
 function init () {
     puzzleBoard4x4 = [
         null, null, null, 3,
-        null, 4, null, 1,
+        null, 4, null,null,
         null, null, 3, 2,
         null, null, null, null
     ];
@@ -98,6 +102,7 @@ function init () {
     checkArr = [];
     initial = 1;
     displaying = 1;
+    startTime = Date.now();
     createBoard();
     render ();
     initial = 0;
@@ -133,7 +138,7 @@ function renderMessage (){
     messageEl.innerText = 'Please Enter A Valid Number';
     }
     if (solvedCorrectly === 1){
-        messageEl.innerText = 'Congrats You Sovled the Puzzle Correctly!'
+        messageEl.innerText = `Congrats You Sovled the Puzzle Correctly in ${endTime} Seconds!`
     }
     else if (solvedCorrectly === 0){
         messageEl.innerText = 'Take a Look Again, Somethings Not Quite Right'
@@ -152,10 +157,8 @@ function submitClick () {
 }
 
 function gridClick (evt) {
-    console.log(gridEl)
         if (gridEl.indexOf(evt.target) === -1){return;}
         const cellPos = gridEl.indexOf(evt.target);
-        console.log(cellPos)
         lastCell = currentCell;
         if(lastCell){
         lastCell.style.backgroundColor = null;
@@ -168,10 +171,11 @@ function checkAnsClick () {
     gridEl.forEach(function(elem, idx){
         checkArr[idx] = elem.innerText;
     });
-    if (checkArr.toString() === solutionBoard.toString()){ solvedCorrectly = 1;} 
+    if (checkArr.toString() === solutionBoard.toString()){
+        solvedCorrectly = 1;
+        endTime = (Date.now() - startTime)/1000;
+    } 
     else {solvedCorrectly = 0;}
-    console.log(checkArr);
-    console.log(solvedCorrectly);
     render();
 }
 
@@ -212,11 +216,72 @@ function createBoard () {
      if (choice === 4){
         boardEl.style.gridTemplateColumns = 'repeat(4, 20vmin)';
         boardEl.style.gridTemplateRows = 'repeat(4, 20vmin)';
+        for (i=1; i < 14; i+=4){
+            document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
+        }
+        for (i=4; i < 8; i++){
+            document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
+        }
      } else if (choice === 6){
         boardEl.style.gridTemplateColumns = 'repeat(6, 13vmin)';
         boardEl.style.gridTemplateRows = 'repeat(6, 13vmin)';
+        for (i=2; i < 33; i+=6){
+            document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
+        }
+        for (i=6; i < 12; i++){
+            document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
+        }
+        for (i=18; i < 24; i++){
+            document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
+        }
      } else if (choice === 9){
         boardEl.style.gridTemplateColumns = 'repeat(9, 9vmin)';
         boardEl.style.gridTemplateRows = 'repeat(9, 9vmin)';
+        for (i=2; i < 75; i+=9){
+            document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
+        }
+        for (i=5; i < 78; i+=9){
+            document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
+        }
+        for (i=18; i < 27; i++){
+            document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
+        }
+        for (i=45; i < 54; i++){
+            document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
+        }
      }
 }
+
+
+// let randArr = [
+//     null, null, null, null,
+//     null, null, null, null,
+//     null, null, null, null,
+//     null, null, null, null
+// ];
+// let randNum;
+
+// for (i=0; i <4; i++){
+//     let randN = generateRandNum();
+//     if (i === 0){
+//         randArr[i] = randN;
+//     } else if (i === 1){
+//         randArr[1] = randN;
+//         while (randArr[1] === randArr[0]){
+//         randN = generateRandNum();
+//         randArr[1] = randN;
+//         }
+//     } else if (i === 2){
+//         randArr[4] = randN;
+//         while(randArr[4] === randArr[0] || randArr[4] === randArr[1]){
+//             randN = generateRandNum();
+//             randArr[1] = randN;
+//         }
+//     }
+// console.log(randArr);
+// }
+
+// function generateRandNum (){
+//     randNum = Math.floor((Math.random()*4)+1);
+//     return randNum;
+// }
