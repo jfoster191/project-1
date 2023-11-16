@@ -10,7 +10,7 @@ Sudoku is a logic-based, combinatorial number-placement puzzle. In classic Sudok
 
 ## Getting Started
 
-![Sudoku Rendered in Browser](https://i.imgur.com/0MZVWAI.png "Sudoku!")
+![Sudoku Rendered in Browser](https://i.imgur.com/AWr5WDh.png "Sudoku!")
 
 ### Link to Game
 

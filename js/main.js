@@ -24,7 +24,7 @@ const solutionBoard9x9 = [
     6, 7, 1, 3, 4, 5, 9, 8, 2,
     2, 4, 8, 7, 6, 9, 3, 1, 5
 ];
-const thickness = '0.9vmin';
+const thickness = '0.75vmin';
 
 
 //-------------State Variables--------------------//
