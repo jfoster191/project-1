@@ -55,7 +55,6 @@ const boardEl = document.getElementById('board');
 const numbersEl = document.getElementById('numbers');
 
 //-------------------Event Listeners--------------//
-// submitBtn.addEventListener('click', submitClick); 
 document.getElementById('board').addEventListener('click', gridClick);
 resetBtn.addEventListener('click', resetClick);
 checkBtn.addEventListener('click', checkAnsClick);
