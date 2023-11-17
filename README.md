@@ -14,6 +14,8 @@ Sudoku is a logic-based, combinatorial number-placement puzzle. In classic Sudok
 
 ### Link to Game
 
+Press the Link to Play: [Sudoku!](https://jfoster191.github.io/project-1/)
+
 ### How to Play
  1. First select your difficulty by clicking on the image of the board size that you would like to play on the left side of the screen.
  2. Select the cell that you would like to place a number into by clicking on it.
