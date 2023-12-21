@@ -1,4 +1,67 @@
-* {
+body {
+    height: 100vh;
+    background-image: url("https://t3.ftcdn.net/jpg/00/36/49/68/360_F_36496844_T0fhWa7JRPySG3Uv0iFed6Ev4lIMfRRz.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav{
+    background-color: white;
+}
+
+#board {
+    display: grid;
+    grid-area: grid;
+    justify-content: center;
+}
+
+#board > div {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 0.3vmin solid black;
+    background-color: white;
+    font-size: 7vmin;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    font-size: 9vmin;
+    font-weight: bolder;
+    margin-top: 0.5vh;
+    align-items: center;
+}
+
+#interact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    margin-top: 2vmin;
+}
+
+#numbers {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5vmin;
+    font-size: 10vmin;
+    width: 50vw;
+}
+
+#message {
+    font-size: 4vmin;
+    text-wrap: wrap;
+    margin-top: -1vh;
+    align-content: center;
+}
+
+#board > div:hover {
+    background-color: #0014CC;
+    opacity: 0.5;
+}
+
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -118,7 +181,7 @@ button:hover{
     margin-left: 4vw;
     margin-right: 4vw;
 }
-
+*
 #board > div {
     display: flex;
     align-content: center;
@@ -155,4 +218,4 @@ p:hover {
     text-shadow: white 1px 1px 5px;
 }
 
-
+ */

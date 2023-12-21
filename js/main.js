@@ -216,7 +216,6 @@ function createBoard () {
     if (gridEl){
         boardEl.innerHTML = '';
         numbersEl.innerHTML = '';
-        
     }
     for (i=1; i < choice+1; i++){
         const textEl = document.createElement('p',`id="p${i}"`);
