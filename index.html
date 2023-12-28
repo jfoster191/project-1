@@ -13,34 +13,34 @@
     <script defer src="js/main.js"></script>
 </head>
 <body>
-    <nav>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="">Sudoku</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="" role="button" aria-expanded="false">Difficulty</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" id="board-4" href="#">Easy</a></li>
-                <li><a class="dropdown-item" id="board-6" href="#">Medium</a></li>
-                <li><a class="dropdown-item" id="board-9" href="#">Hard</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
+  <nav>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="">Sudoku</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="" role="button" aria-expanded="false">Difficulty</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" id="board-4" href="#">Easy</a></li>
+            <li><a class="dropdown-item" id="board-6" href="#">Medium</a></li>
+            <li><a class="dropdown-item" id="board-9" href="#">Hard</a></li>
           </ul>
-    </nav>
-    <header>Sudoku!
-        <h1 id="message"></h1>
-    </header>
-    <div class="container">
-        <div class="grid text-center" id="board"></div>
-    </div>
-    <div class="container" id="numbers"></div>
-    <div id="interact">
-        <button class="btn btn-primary" id="check">Check Answer</button>
-        <button class="btn btn-primary" id="reset">Reset Board</button>
-    </div>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+      </ul>
+  </nav>
+  <header>Sudoku!
+      <h1 id="message"></h1>
+  </header>
+  <div class="container">
+      <div class="grid text-center" id="board"></div>
+  </div>
+  <div class="container" id="numbers"></div>
+  <div class="container" id="interact">
+      <button class="btn btn-primary" id="check">Check Answer</button>
+      <button class="btn btn-primary" id="reset">Reset Board</button>
+  </div>
 </body>
 </html>
