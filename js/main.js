@@ -228,8 +228,8 @@ function createBoard () {
      });
      gridEl = [...document.querySelectorAll('#board > div')];
      if (choice === 4){
-        boardEl.style.gridTemplateColumns = 'repeat(4, 20vmin)';
-        boardEl.style.gridTemplateRows = 'repeat(4, 20vmin)';
+        boardEl.style.gridTemplateColumns = 'repeat(4, 15vmin)';
+        boardEl.style.gridTemplateRows = 'repeat(4, 15vmin)';
         for (i=1; i < 14; i+=4){
             document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
         }
@@ -237,8 +237,8 @@ function createBoard () {
             document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
         }
      } else if (choice === 6){
-        boardEl.style.gridTemplateColumns = 'repeat(6, 13vmin)';
-        boardEl.style.gridTemplateRows = 'repeat(6, 13vmin)';
+        boardEl.style.gridTemplateColumns = 'repeat(6, 11vmin)';
+        boardEl.style.gridTemplateRows = 'repeat(6, 11vmin)';
         for (i=2; i < 33; i+=6){
             document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
         }
@@ -249,8 +249,8 @@ function createBoard () {
             document.getElementById(`${i}`).style.borderBottom = `${thickness} solid black`
         }
      } else if (choice === 9){
-        boardEl.style.gridTemplateColumns = 'repeat(9, 9vmin)';
-        boardEl.style.gridTemplateRows = 'repeat(9, 9vmin)';
+        boardEl.style.gridTemplateColumns = 'repeat(9, 7.5vmin)';
+        boardEl.style.gridTemplateRows = 'repeat(9, 7.5vmin)';
         for (i=2; i < 75; i+=9){
             document.getElementById(`${i}`).style.borderRight = `${thickness} solid black`
         }
